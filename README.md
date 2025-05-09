@@ -1,6 +1,6 @@
 # Novelbin - My Virtual Library Watermark Remover
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover/blob/master/LICENSE)
-[![Version](https://img.shields.io/badge/Version-0.1.0-blue.svg)](https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover/releases/tag/v0.1.0)
+[![Version](https://img.shields.io/badge/Version-0.1.5-blue.svg)](https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover/releases/tag/v0.1.5)
 
 A simple userscript that automatically removes sentences containing "My Virtual Library" watermarks/ads from [Novelbin](https://novelbin.me) novel pages.
 
