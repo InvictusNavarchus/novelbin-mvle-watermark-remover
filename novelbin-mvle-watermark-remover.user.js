@@ -3,7 +3,7 @@
 // @namespace    https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover
 // @downloadURL  https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
 // @updateURL    https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
-// @version      0.1.3
+// @version      0.1.4
 // @description  Removes sentences containing "My Virtual Library" watermarks from Novelbin
 // @author       invictus
 // @match        https://novelbin.me/*
@@ -28,8 +28,10 @@
         if (!text.includes('My Virtual Library')) return text;
         
         // Match sentences containing the watermark
-        // This regex looks for sentences ending with .!? and containing "My Virtual Library"
-        const sentenceRegex = /[^.!?]*My Virtual Library[^.!?]*[.!?]/gi;
+        // This regex looks for sentences containing "My Virtual Library" that either:
+        // 1. End with punctuation (.!?), or
+        // 2. End at the end of the string (no punctuation)
+        const sentenceRegex = /[^.!?]*My Virtual Library[^.!?]*(?:[.!?]|$)/gi;
         
         // Replace watermarked sentences with empty string
         const cleanedText = text.replace(sentenceRegex, '');
@@ -50,7 +52,7 @@
         
         // Process each paragraph
         paragraphs.forEach(paragraph => {
-            const originalText = paragraph.textContent;
+            const  originalText = paragraph.textContent;
             if (originalText.includes('My Virtual Library')) {
                 const cleanedText = removeWatermarkSentences(originalText);
                 
