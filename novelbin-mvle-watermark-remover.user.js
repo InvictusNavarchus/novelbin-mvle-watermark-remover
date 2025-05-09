@@ -17,7 +17,7 @@
 (function() {
     'use strict';
     
-    const DEBUG = false;
+    const DEBUG = true;
     
     /**
      * Removes paragraphs containing "My Virtual Library" text
