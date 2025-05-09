@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         Novelbin - My Virtual Library Watermark Remover
-// @namespace    https://github.com/invictus/novelbin-mvle-watermark-remover
-// @version      1.0.0
+// @namespace    https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover
+// @downloadURL  https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
+// @updateURL    https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
+// @version      0.1.0
 // @description  Removes sentences containing "My Virtual Library" watermarks from Novelbin
 // @author       invictus
+// @match        https://novelbin.me/*
 // @match        https://novelbin.net/*
 // @match        https://novelbin.com/*
 // @match        https://novelbin.io/*
-// @match        https://*.novelbin.net/*
-// @match        https://*.novelbin.com/*
-// @match        https://*.novelbin.io/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
