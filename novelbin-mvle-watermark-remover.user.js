@@ -3,7 +3,7 @@
 // @namespace    https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover
 // @downloadURL  https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
 // @updateURL    https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
-// @version      0.1.4
+// @version      0.1.5
 // @description  Removes sentences containing "My Virtual Library" watermarks from Novelbin
 // @author       invictus
 // @match        https://novelbin.me/*
@@ -31,7 +31,7 @@
         // This regex looks for sentences containing "My Virtual Library" that either:
         // 1. End with punctuation (.!?), or
         // 2. End at the end of the string (no punctuation)
-        const sentenceRegex = /[^.!?]*My Virtual Library[^.!?]*(?:[.!?]|$)/gi;
+        const sentenceRegex = /[^.!?"']*My Virtual Library[^.!?]*(?:[.!?]|$)/gi;
         
         // Replace watermarked sentences with empty string
         const cleanedText = text.replace(sentenceRegex, '');
