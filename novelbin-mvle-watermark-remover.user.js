@@ -3,7 +3,7 @@
 // @namespace    https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover
 // @downloadURL  https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
 // @updateURL    https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
-// @version      0.1.2
+// @version      0.1.3
 // @description  Removes sentences containing "My Virtual Library" watermarks from Novelbin
 // @author       invictus
 // @match        https://novelbin.me/*
@@ -65,7 +65,7 @@
                     removedCount++;
                     
                     // Remove empty paragraphs
-                    if (!cleanedText) {
+                    if (cleanedText.length === 0) {
                         paragraph.remove();
                     }
                 }
