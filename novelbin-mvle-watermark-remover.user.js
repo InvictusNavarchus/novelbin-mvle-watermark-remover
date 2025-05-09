@@ -3,7 +3,7 @@
 // @namespace    https://github.com/InvictusNavarchus/novelbin-mvle-watermark-remover
 // @downloadURL  https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
 // @updateURL    https://raw.githubusercontent.com/InvictusNavarchus/novelbin-mvle-watermark-remover/master/novelbin-mvle-watermark-remover.user.js
-// @version      0.1.0
+// @version      0.1.2
 // @description  Removes sentences containing "My Virtual Library" watermarks from Novelbin
 // @author       invictus
 // @match        https://novelbin.me/*
@@ -20,7 +20,25 @@
     const DEBUG = true;
     
     /**
-     * Removes paragraphs containing "My Virtual Library" text
+     * Removes sentences containing "My Virtual Library" text from a paragraph
+     * @param {string} text - The paragraph text to clean
+     * @return {string} The cleaned text with watermarked sentences removed
+     */
+    function removeWatermarkSentences(text) {
+        if (!text.includes('My Virtual Library')) return text;
+        
+        // Match sentences containing the watermark
+        // This regex looks for sentences ending with .!? and containing "My Virtual Library"
+        const sentenceRegex = /[^.!?]*My Virtual Library[^.!?]*[.!?]/gi;
+        
+        // Replace watermarked sentences with empty string
+        const cleanedText = text.replace(sentenceRegex, '');
+        
+        return cleanedText.trim();
+    }
+    
+    /**
+     * Removes sentences containing "My Virtual Library" text from paragraphs
      */
     function removeWatermarks() {
         // Target the chapter content container or fall back to body
@@ -30,19 +48,32 @@
         const paragraphs = contentContainer.querySelectorAll('p');
         let removedCount = 0;
         
-        // Remove paragraphs containing the watermark text
+        // Process each paragraph
         paragraphs.forEach(paragraph => {
-            if (paragraph.textContent.includes('My Virtual Library')) {
-                if (DEBUG) {
-                    console.log('[MVL Remover] Removed watermark:', paragraph.textContent.trim());
+            const originalText = paragraph.textContent;
+            if (originalText.includes('My Virtual Library')) {
+                const cleanedText = removeWatermarkSentences(originalText);
+                
+                // Only update if we actually removed something
+                if (cleanedText !== originalText) {
+                    if (DEBUG) {
+                        console.log('[MVL Remover] Removed watermark sentence from:', originalText.trim());
+                        console.log('[MVL Remover] Resulting text:', cleanedText);
+                    }
+                    
+                    paragraph.textContent = cleanedText;
+                    removedCount++;
+                    
+                    // Remove empty paragraphs
+                    if (!cleanedText) {
+                        paragraph.remove();
+                    }
                 }
-                paragraph.remove();
-                removedCount++;
             }
         });
         
         if (removedCount > 0 && DEBUG) {
-            console.log(`[MVL Remover] Removed ${removedCount} watermark paragraphs`);
+            console.log(`[MVL Remover] Cleaned ${removedCount} paragraphs containing watermark sentences`);
         }
         
         return removedCount;
