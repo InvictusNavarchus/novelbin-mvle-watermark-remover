@@ -6,7 +6,7 @@ A simple userscript that automatically removes sentences containing "My Virtual 
 
 ## ✨ Features
 
-- Automatically detects and removes paragraphs containing "My Virtual Library" texts
+- Automatically detects and removes sentences containing "My Virtual Library" texts
 - Works on all Novelbin domains (novelbin.me, novelbin.net, novelbin.com, novelbin.io)
 - Handles dynamically loaded content
 - Lightweight and efficient with minimal performance impact
